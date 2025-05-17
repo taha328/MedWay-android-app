@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background_gradient_subtle"
+    tools:context=".ui.PatientAppointmentsFragment">
+
+    <!-- 1. Subtle background -->
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_view_my_appointments"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clipToPadding="false"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:paddingTop="16dp"
+        android:paddingBottom="80dp"
+        android:scrollbars="vertical"
+        android:overScrollMode="ifContentScrolls"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        tools:listitem="@layout/item_appointment" />
+
+    <!-- 2. More horizontal padding -->
+    <!-- 3. Enhanced Empty State -->
+
+    <LinearLayout
+        android:id="@+id/layout_my_appointments_empty"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        android:padding="24dp"
+        android:background="@drawable/empty_state_background"
+        android:elevation="4dp"
+        android:visibility="gone"
+        tools:visibility="visible">
+
+        <ImageView
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:src="@drawable/ic_no_appointments"
+            app:tint="?attr/colorPrimary"
+            android:layout_marginBottom="16dp"
+            android:contentDescription="@string/cd_no_appointments_icon" />
+
+        <!-- 4. Custom Icon -->
+
+        <TextView
+            android:id="@+id/text_view_my_appointments_empty_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Aucun rendez-vous programmé."
+            android:textAppearance="?attr/textAppearanceHeadline6"
+            android:textColor="?android:attr/textColorPrimary"
+            android:gravity="center"
+            android:layout_marginBottom="8dp" />
+
+        <TextView
+            android:id="@+id/text_view_my_appointments_empty_subtitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Vos rendez-vous s'afficheront ici une fois planifiés."
+            android:textAppearance="?attr/textAppearanceBody2"
+            android:textColor="?android:attr/textColorSecondary"
+            android:gravity="center" />
+    </LinearLayout>
+
+    <!-- 5. Modern Loading Indicator -->
+
+    <com.google.android.material.progressindicator.CircularProgressIndicator
+        android:id="@+id/loading_indicator_my_appointments"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        app:indicatorColor="?attr/colorPrimary"
+        app:indicatorSize="48dp"
+        android:indeterminate="true"
+        android:visibility="gone"
+        tools:visibility="visible" />
+
+</FrameLayout>
